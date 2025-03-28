@@ -7,7 +7,7 @@ RUN npm config set fetch-retry-maxtimeout 6000000 && npm config set fetch-retry-
 
 COPY ./ .
 
-RUN ln -s /usr/lib/libssl.so.3 /lib/libssl.so.3 && npx prisma generate && npm run build
+RUN ln -s /usr/lib/libssl.so.3 /lib/libssl.so.3 && npm run build
 
 ARG VERSION
 ARG BUILD
