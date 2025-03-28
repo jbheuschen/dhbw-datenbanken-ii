@@ -21,4 +21,7 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  server: {
+    allowedHosts: ["fheuschen-dashboard.dev.int.jbh.eus", "dbii.dev.int.jbh.eus"]
+  }
 });
