@@ -32,14 +32,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+      {children}
+      <ScrollRestoration/>
+      <Scripts/>
+      <script src="https://cdn.jsdelivr.net/npm/preline@2.6.0/dist/preline.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
       </body>
     </html>
   );
 }
 
 export default function App() {
-  return <Outlet />;
+  return <Outlet/>;
 }
