@@ -33,6 +33,11 @@ export class RedisConnector {
         });
     }
 
+    public async getMessageHistory(): Promise<Comment[]> {
+        // NO IMPLEMENTATION
+        return [];
+    }
+
     public finalize() {
         this.client.unsubscribe();
     }

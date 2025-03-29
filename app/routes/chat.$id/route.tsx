@@ -5,6 +5,8 @@ import {RedisConnector} from "~/service/RedisConnector";
 import {Comment} from "~/service/Comment";
 import PMChat from "~/ui/PMChat";
 import {v4} from "uuid";
+import {useEventSource} from "remix-utils/sse/react";
+import {useEffect, useState} from "react";
 
 export const meta: MetaFunction = () => {
     return [
@@ -39,11 +41,7 @@ export async function loader({request, params}: LoaderFunctionArgs) {
     const id = params.id ?? "1";
     const connector = new RedisConnector();
 
-    const messages: Comment[] = [];
-
-    await connector.subscribe((msg) => {
-        messages.push(msg);
-    });
+    const messages: Comment[] = await connector.getMessageHistory();
 
     return {id, messages};
 }
@@ -52,9 +50,19 @@ export default function Index() {
 
     const data = useLoaderData<typeof loader>();
 
+    const [msgs, setMsgs] = useState<Comment[]>(data.messages);
+
+    const sse = useEventSource("/sse/" + data.id, { event: "chat" });
+
+    useEffect(() => {
+        if(sse) {
+            setMsgs(msgs.concat([JSON.parse(sse) as Comment]));
+        }
+    }, [sse]);
+
     return (
         <div className="w-full">
-            <PMChat comments={data.messages} userId={data.id} />
+            <PMChat comments={msgs} userId={data.id} />
         </div>
     );
 }

@@ -35,8 +35,8 @@ const PMChat = React.memo(({comments, userId}: PMChatProps) => {
             className="flex flex-col bg-white pointer-events-auto max-w-full max-h-full h-full dark:bg-neutral-800">
             <div className="p-4 overflow-y-auto">
                 <ul className="space-y-5">
-                    {comments.map(c => <PMChatBubble key={c.id} author={c.user} ownMessage={userId === c.userId}
-                                                     message={c.content} timestamp={c.created}/>)}
+                    {comments.map(c => <PMChatBubble key={c.uid} author={c.author} ownMessage={userId === c.author}
+                                                     message={c.message} timestamp={c.date}/>)}
                 </ul>
             </div>
             <div
