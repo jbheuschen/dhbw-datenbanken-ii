@@ -3,7 +3,7 @@ FROM node:23-alpine
 WORKDIR /dbi
 
 COPY ./package.json ./
-RUN npm config set fetch-retry-maxtimeout 6000000 && npm config set fetch-retry-mintimeout 1000000 && npm install --no-audit --fetch-timeout=60000000
+RUN npm config set fetch-retry-maxtimeout 6000000 && npm config set fetch-retry-mintimeout 1000000 && npm install --no-audit --legacy-peer-deps --fetch-timeout=60000000
 
 COPY ./ .
 
