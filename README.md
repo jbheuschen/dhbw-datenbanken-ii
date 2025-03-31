@@ -1,40 +1,15 @@
-# Welcome to Remix!
+# Datenbanken II-Projekt
 
-- 📖 [Remix docs](https://remix.run/docs)
+WWI2023A - Modul Datenbanken II
 
-## Development
+## Projektbeschreibung
 
-Run the dev server:
+Vorliegend ist eine simple Webapplikation, welche die Umsetzung einer Live-Chat-Funktion mittels Redis zeigt.
 
-```shellscript
-npm run dev
-```
+Die Applikation kann über das beiliegende Docker Compose-File gestartet werden und steht anschließend auf Port 8080 zur Verfügung.
 
-## Deployment
+## Funktionsweise
 
-First, build your app for production:
+Von der Landing-Page aus können mehrere Chat-Fenster geöffnet werden. Die Nummer identifiziert hierbei einen Teilnehmer, alle Fenster führen also zum selben Chat jedoch aus der Sicht eines anderen Teilnehmers.
 
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+Die Historisierung der Chat-Inhalte sowie die Bereitstellung mehrerer Chat-Räume sind mögliche zukünftige Erweiterungen dieser Applikation.
